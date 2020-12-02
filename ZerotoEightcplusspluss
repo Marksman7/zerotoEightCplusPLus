@@ -1,0 +1,135 @@
+#include<vector>
+#include <iostream>
+#include <set>
+#include <string>
+#include <time.h>
+
+
+
+std::string stuff[8000];
+
+int main()
+{
+    srand((unsigned int)time(NULL));
+
+    //srand(time(NULL));
+
+    int Stop = 0;
+
+    int check = 0;
+
+    int num = 0;
+
+    int up = 0;
+
+    bool OK = false;
+
+    std::string That = "";
+
+    std::string here = "";
+
+    std::string word[9] = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
+
+
+    int Number[9] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+
+    int number = 0;
+    std::cin >> That;
+
+    for (int i = 0; i < 9; i++)
+    {
+        if (That == word[i])
+        {
+            number = Number[i];
+
+        }
+    }
+
+    for (int e = 0; e < 8000; e++)
+    {
+        stuff[e] = "";
+    }
+
+    std::string choices[16]{"(", ")", "(", ")",  "(", ")",  "(", ")",  "(", ")",  "(", ")",  "(", ")",  "(", ")"};
+
+    int choice[16]{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
+
+    int Kyle = number + number;
+
+
+    int r = 0;
+
+    while (up < 8000)
+    {
+
+        OK = false;
+
+        while (OK == false)
+        {
+
+            here = "";
+
+            r = 0;
+
+            while(r < Kyle)
+            {
+
+                num = rand() % (Kyle);
+
+
+                if (choice[num] == 0)
+                {
+                    choice[num] = 1;
+
+                    here = here + choices[num];
+
+                    r = r + 1;
+                }
+            }
+
+            check = 0;
+
+            for (int k = 0; k <= up; k++)
+            {
+                if (here != stuff[k])
+                {
+                    check = check + 1;
+                }
+            }
+
+            if (check >= up)
+            {
+                OK = true;
+                std::cout << here + "\n" << std::endl;
+                stuff[up] = here;
+            }
+
+            Stop = Stop + 1;
+
+            if (Stop > 2000)
+            {
+                OK = true;
+            }
+            
+        }
+
+        for (int j = 0; j < 16; j++)
+        {
+            choice[j] = 0;
+        }
+
+        if (Stop > 2000)
+        {
+            up = 1000;
+        }
+
+        up += 1;
+    }
+
+    
+
+    /*for (int q = 0; q < 8000; q++)
+    {
+        std::cout << stuff[q] + "\n" << std::endl;
+    }*/
+}
